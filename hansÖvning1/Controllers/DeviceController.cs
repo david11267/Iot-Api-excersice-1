@@ -24,9 +24,9 @@ namespace hansÖvning1.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetIotDeviceAsync(IotDevice device)
+        public async Task<IActionResult> GetIotDeviceAsync(string deviceId)
         {
-            return new OkObjectResult(await _deviceManager.GetDeviceAsync(device));
+            return new OkObjectResult(await _deviceManager.GetDeviceAsync(deviceId));
         }
     }
 }

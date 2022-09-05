@@ -7,7 +7,7 @@ namespace hansÖvning1.Helpers
 {
     public interface IDeviceManager
     {
-        public Task<Twin> GetDeviceAsync(IotDevice iotDevice);
+        public Task<Twin> GetDeviceAsync(string deviceId);
         public Task<string> CreateDeviceAsync(IotDevice iotDevice);
     }
 
@@ -31,11 +31,11 @@ namespace hansÖvning1.Helpers
             return $"HostName=Shared-IOT-Hub.azure-devices.net;DeviceId={deviceResponse.Id};SharedAccessKey={deviceResponse.Authentication.SymmetricKey.PrimaryKey}";
         }
 
-        public async Task<Twin> GetDeviceAsync(IotDevice iotDevice)
+        public async Task<Twin> GetDeviceAsync(string deviceId)
         {
             try
             {
-                var deviceResponse = await _registryManager.GetTwinAsync(iotDevice.id.ToString());
+                var deviceResponse = await _registryManager.GetTwinAsync(deviceId);
 
                 if (deviceResponse != null)
                 {
