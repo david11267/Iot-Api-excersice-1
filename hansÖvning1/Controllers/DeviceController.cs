@@ -28,5 +28,13 @@ namespace hansÖvning1.Controllers
         {
             return new OkObjectResult(await _deviceManager.GetDeviceAsync(deviceId));
         }
+
+        [HttpPost]
+        [Route("GetOrCreate")]
+        public async Task<IActionResult> GetOrCreateIotDeviceAsync(IotDevice device)
+        {
+
+            return new OkObjectResult(await _deviceManager.GetOrCreateDeviceAsync(device));
+        }
     }
 }
